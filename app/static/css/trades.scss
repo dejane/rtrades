@@ -1,0 +1,79 @@
+$primary-color:     #0b101c;
+$secondary-color:   #1b2337;
+$third-color:       #3f4860;
+
+body {
+  padding-top: 50px;
+  height: 100vh;
+}
+
+h1 {
+  margin-bottom: 20px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar {
+     background-color: $secondary-color;
+
+     .navbar-brand {
+       color: white;
+     }
+}
+
+.sidebar {
+  position: fixed;
+  background-color: $third-color;
+  top: 51px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-left: 0;
+  padding-right: 0;
+  height: 90vh;
+
+  @media (max-width: 1000.98px) {
+     top: 0px;
+     position: static;
+     height: auto;
+  }
+
+  .nav {
+    margin-bottom: 20px;
+  }
+
+   .nav-item {
+    width: 100%;
+  }
+
+  .nav-item + .nav-item {
+    margin-left: 0;
+  }
+
+   .nav-link {
+    border-radius: 0;
+  }
+}
+
+.placeholders {
+  padding-bottom: 3rem;
+}
+
+.placeholder img {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+canvas{
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  margin-top: 20px;
+}
+
+footer {
+  z-index: 2000;
+}

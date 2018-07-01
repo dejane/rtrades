@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+   <head>
+       <link rel="shortcut icon" href="{{url_for('static', filename = 'images/fav.ico')}}" type="image/x-icon"/>
+       <title>Rtrades</title>
+       <link rel="stylesheet" href = "{{ url_for('static', filename='css/base.css') }}">
+       <link rel="stylesheet" href = "{{ url_for('static', filename='css/bootstrap.css') }}">
+       <link rel="stylesheet" href = "{{ url_for('static', filename='css/trades.css') }}">
+       <script src="{{ url_for('static', filename='scripts/jquery.min.js') }}"></script>
+       <script src="{{ url_for('static', filename='scripts/Chart.bundle.js') }}"></script>
+       <script src="{{ url_for('static', filename='scripts/utils.js') }}"></script>
+       <script src="{{url_for('static', filename='scripts/_init.js')}}"></script>
+       <script src="{{url_for('static', filename='scripts/main.js')}}"></script>
+       <script src="{{url_for('static', filename='scripts/graph.js')}}"></script>
+   </head>
+
+   <body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-faded">
+         <a class="navbar-brand" href="{{url_for('index')}}"> Rtrades </a>
+      <a class="navbar-brand" href="{{url_for('logout')}}"> Logout </a>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <nav class="col-md-1 col-xs-12 col-sm-12  bg-faded sidebar">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item" onclick="showBtc()">
+              <a id="link1" class="nav-link active" href="#">BTC/USD</a>
+            </li>
+            <li class="nav-item" onclick="showEth()">
+              <a id="link2" class="nav-link" href="#">ETH/USD</a>
+            </li>
+            <li class="nav-item" onclick="showXrp()">
+              <a id="link3" class="nav-link" href="#">XRP/USD</a>
+            </li>
+          </ul>
+
+        </nav>
+
+        <div class="main col-md-9 offset-md-1 col-xs-12 col-sm-12 pt-3">
+		    <canvas id="canvas"></canvas>
+        </div>
+
+        <div style="overflow-y: scroll; height: 90vh;" class="right col-md-2 col-sm-12  col-xs-12  pt-3">
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Price($)</th>
+                    </tr>
+                  </thead>
+
+                  <!-- tbody 1 the default visible -->
+                  <tbody id="tbody1">
+                    {% if rows_btc is defined and rows_btc %}
+                      {% for row in rows_btc %}
+                      <tr>
+                        <td style="display:none;">{{ row['id'] }}</td>
+                        <td id="tms">{{ row['timestamp'] }}</td>
+                        <td class="btc_price" >{{ row['price'] }}</td>
+                      </tr>
+                      {% endfor %}
+                    {% endif %}
+
+                  </tbody>
+
+                  <!-- tbody 2 for eth -->
+                  <tbody id="tbody2" style="display:none;">
+                    {% if rows_eth is defined and rows_eth %}
+                      {% for row in rows_eth %}
+                      <tr>
+                        <td style="display:none;">{{ row['id'] }}</td>
+                        <td id="tms2">{{ row['timestamp'] }}</td>
+                        <td class="eth_price">{{ row['price'] }}</td>
+                      </tr>
+                      {% endfor %}
+                    {% endif %}
+
+
+                  </tbody>
+                  <!-- tbody 3 for xrp -->
+                  <tbody id="tbody3" style="display:none;">
+                    {% if rows_xrp is defined and rows_xrp %}
+                      {% for row in rows_xrp %}
+                      <tr>
+                        <td style="display:none;">{{ row['id'] }}</td>
+                        <td id="tms3">{{ row['timestamp'] }}</td>
+                        <td class="xrp_price" >{{ row['price'] }}</td>
+                      </tr>
+                      {% endfor %}
+                    {% endif %}
+
+                  </tbody>
+
+                </table>
+              </div>
+
+            </div>
+
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      <div class="container-fluid">
+          <span>&copy;2018 Dejan Lužnic | </span><a href="https://github.com/dejane/rtrades" target="_blank">Github link</a>
+      </div>
+    </footer>
+
+  </body>
+</html>

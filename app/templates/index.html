@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="container-fluid landing-page-bg">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="landing-page-info">
+        <h1> Realtime trades on  Bitfiinex exchange</h1>
+        <h3> btc/usd   |  eth/usd   |   xrp/usd</h3>
+        <br/>
+        <a href="{{url_for('register')}}"><button type="button" class="btn btn-primary">Register</button></a>
+        <a href="{{url_for('login')}}"><button type="button" class="btn btn-primary">Login</button></a>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

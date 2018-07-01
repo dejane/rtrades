@@ -1,0 +1,49 @@
+
+{% extends "main.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Register{% endblock %}
+
+{% block regicons %}
+  <li class="nav-item"><a class="nav-link" href="{{url_for('login')}}"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+{% endblock %}
+{% block content %}
+
+<div class="container-fluid login-register-wrapper">
+  <br/>
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+
+    <br/></br></br>
+    <div class="col-md-4 cust-form-styles">
+
+      <form class="" method="POST" action="/register">
+        <h2 class="pri-color">Register for an account </h2><br/>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="flash-info">{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.username) }}
+        {{ wtf.form_field(form.email) }}
+        {{ wtf.form_field(form.firstname) }}
+        {{ wtf.form_field(form.lastname) }}
+        {{ wtf.form_field(form.password) }}
+        <button class="btn btn-outline-primary" type="submit">Register</button>
+        <br/><br/>
+        <h5>Already have an account? <a href="{{url_for('login')}}">LOGIN HERE</a></h5>
+      </form>
+    </div>
+
+    <div class="col-md-4">
+    </div>
+
+  </div>
+  <br/>
+</div>
+
+{% endblock %}

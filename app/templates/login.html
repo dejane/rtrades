@@ -1,0 +1,47 @@
+
+{% extends "main.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Login{% endblock %}
+
+{% block regicons %}
+  <li class="nav-item"><a class="nav-link" href="{{url_for('register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a></li>
+{% endblock %}
+
+
+{% block content %}
+  <div class="container-fluid login-register-wrapper">
+    <br/><br/>
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+
+      <br/></br></br>
+      <div class="col-md-4 cust-form-styles">
+        <form class="" method="POST" >
+          <h2 class="pri-color">Log In </h2><br/>
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for message in messages %}
+                <p class="flash-info">{{ message }}</p>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+
+          {{ form.hidden_tag() }}
+          {{ wtf.form_field(form.email) }}
+          {{ wtf.form_field(form.password) }}
+          {{ wtf.form_field(form.remember) }}
+          <button class="btn btn-outline-primary" type="submit">Log In </button>
+        </form>
+        <br/>
+        <h5>Don't have an account? <a href="{{url_for('register')}}">SIGN UP</a></h5>
+      </div>
+
+      <div class="col-md-4">
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
